@@ -1,28 +1,76 @@
-from src.rag.embeddings.embedding_manager import EmbeddingManager
-from src.rag.generation.answer_generator import AnswerGenerator
-from src.rag.evaluation.rag_evaluator import RAGEvaluator
-from data.evaluation.test_dataset import EVALUATION_DATASET
-import json
+import os
+from typing import List, Dict
+from dotenv import load_dotenv
+from ragas import evaluate
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_relevancy,
+    context_recall,
+    context_precision,
+)
+from datasets import Dataset
+from src.rag import RAG
+
+# 環境変数の読み込み
+load_dotenv()
+
+def create_evaluation_dataset(rag: RAG, test_data: List[Dict]) -> Dataset:
+    """評価用データセットを作成"""
+    questions = []
+    ground_truths = []
+    contexts = []
+    answers = []
+
+    for item in test_data:
+        question = item["question"]
+        ground_truth = item["ground_truth"]
+
+        # RAGシステムで回答を生成
+        response = rag.query(question)
+
+        questions.append(question)
+        ground_truths.append(ground_truth)
+        # コンテキストを文字列のリストとして提供
+        contexts.append([response["context"]])
+        answers.append(response["answer"])
+
+    return Dataset.from_dict({
+        "question": questions,
+        "ground_truth": ground_truths,
+        "contexts": contexts,
+        "answer": answers
+    })
 
 def main():
-    # コンポーネントの初期化
-    embedding_manager = EmbeddingManager()
-    answer_generator = AnswerGenerator()
-    evaluator = RAGEvaluator(embedding_manager, answer_generator)
+    # RAGシステムの初期化
+    rag = RAG()
 
-    print("RAGシステムの評価を開始します...")
+    # テストデータの読み込み
+    from data.evaluation.test_dataset import EVALUATION_DATASET
 
-    # データセット全体の評価
-    print("\nデータセット全体の評価:")
-    dataset_results = evaluator.evaluate_dataset(EVALUATION_DATASET)
-    print(json.dumps(dataset_results, indent=2, ensure_ascii=False))
+    # 評価用データセットの作成
+    eval_dataset = create_evaluation_dataset(rag, EVALUATION_DATASET)
 
-    # 個別の質問に対する評価
-    print("\n個別の質問に対する評価:")
-    for item in EVALUATION_DATASET:
-        print(f"\n質問: {item['question']}")
-        result = evaluator.evaluate_response(item["question"], item["ground_truth"])
-        print(json.dumps(result, indent=2, ensure_ascii=False))
+    # 評価指標の定義
+    metrics = [
+        faithfulness,
+        answer_relevancy,
+        context_relevancy,
+        context_recall,
+        context_precision,
+    ]
+
+    # 評価の実行
+    result = evaluate(
+        eval_dataset,
+        metrics=metrics,
+    )
+
+    # 結果の表示
+    print("\n=== RAGAS Evaluation Results ===")
+    for metric_name, score in result.items():
+        print(f"{metric_name}: {score:.4f}")
 
 if __name__ == "__main__":
     main()
