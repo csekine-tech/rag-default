@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rag-app:
+    build: .
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    env_file:
+      - .env
+    ports:
+      - "8080:8000"
+    command: python -m src.main
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
