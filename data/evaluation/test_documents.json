@@ -1,0 +1,25 @@
+{
+    "documents": [
+        {
+            "content": "RAGシステムの主な利点は以下の通りです：\n1. 最新情報の活用が可能\n2. 事実に基づいた回答の生成\n3. ドメイン固有知識の統合\n4. 幻覚（hallucination）の低減\n5. 透明性の向上",
+            "metadata": {
+                "source": "rag_benefits",
+                "type": "benefits"
+            }
+        },
+        {
+            "content": "主要なLLMは以下の3つです：\n1. GPT（Generative Pre-trained Transformer）\n   - OpenAIが開発\n   - GPT-3.5、GPT-4など\n   - 文章生成、対話、コード生成に優れる\n\n2. Claude\n   - Anthropicが開発\n   - 倫理的配慮を重視\n   - 長文の理解と生成に強み\n\n3. PaLM\n   - Googleが開発\n   - 多言語対応\n   - 推論能力に優れる",
+            "metadata": {
+                "source": "llm_types",
+                "type": "models"
+            }
+        },
+        {
+            "content": "AIの主な応用分野は以下の通りです：\n- 医療：病気の診断、創薬支援\n- 金融：不正検知、リスク評価\n- 製造：予知保全、品質管理\n- 小売：レコメンデーション、在庫管理\n- 教育：パーソナライズド学習",
+            "metadata": {
+                "source": "ai_applications",
+                "type": "applications"
+            }
+        }
+    ]
+}

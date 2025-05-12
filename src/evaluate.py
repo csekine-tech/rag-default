@@ -5,9 +5,8 @@ from ragas import evaluate
 from ragas.metrics import (
     faithfulness,
     answer_relevancy,
-    context_relevancy,
-    context_recall,
     context_precision,
+    context_recall,
 )
 from datasets import Dataset
 from src.rag import RAG
@@ -56,9 +55,8 @@ def main():
     metrics = [
         faithfulness,
         answer_relevancy,
-        context_relevancy,
-        context_recall,
         context_precision,
+        context_recall,
     ]
 
     # 評価の実行
@@ -69,8 +67,19 @@ def main():
 
     # 結果の表示
     print("\n=== RAGAS Evaluation Results ===")
-    for metric_name, score in result.items():
-        print(f"{metric_name}: {score:.4f}")
+    for metric, score in zip(metrics, result.scores):
+        # dict型かつ"score"キーがある場合
+        if isinstance(score, dict):
+            if "score" in score and isinstance(score["score"], (float, int)):
+                print(f"{metric.name}: {score['score']:.4f}")
+            else:
+                print(f"{metric.name}: {score}")
+        # float/intの場合
+        elif isinstance(score, (float, int)):
+            print(f"{metric.name}: {score:.4f}")
+        # それ以外（Noneやstrなど）
+        else:
+            print(f"{metric.name}: {score}")
 
 if __name__ == "__main__":
     main()

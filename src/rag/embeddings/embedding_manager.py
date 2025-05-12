@@ -2,7 +2,7 @@ from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 import os
-from typing import List, Optional
+from typing import List, Optional, Callable
 from src.config import get_settings, get_embedding_model_config
 from src.rag.models.model_factory import ModelFactory
 from langchain.schema import Document
@@ -66,3 +66,7 @@ class EmbeddingManager:
             chunk_size=self.settings.CHUNK_SIZE,
             chunk_overlap=self.settings.CHUNK_OVERLAP
         )
+
+    def get_embedding_function(self) -> Callable:
+        """埋め込み関数を取得"""
+        return self.embedding_model.embed_query

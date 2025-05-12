@@ -38,7 +38,7 @@ def main():
         context = embedding_manager.search_similar(question)
 
         # 回答の生成
-        answer = answer_generator.generate_answer(question, context)
+        answer = answer_generator.generate(question, context)
         print("\n回答:", answer)
 
 if __name__ == "__main__":
