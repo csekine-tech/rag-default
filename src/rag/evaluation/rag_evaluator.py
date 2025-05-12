@@ -11,7 +11,7 @@ from ragas.metrics import (
 )
 from ..embeddings.embedding_manager import EmbeddingManager
 from ..generation.answer_generator import AnswerGenerator
-from src.config import get_settings, get_generation_model_config
+from config import get_settings, get_generation_model_config
 
 class RAGEvaluator:
     def __init__(self, embedding_manager: EmbeddingManager, answer_generator: AnswerGenerator):

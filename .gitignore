@@ -39,3 +39,6 @@ data/knowledge/
 
 # Docker
 .docker/
+
+# tools
+.cursor

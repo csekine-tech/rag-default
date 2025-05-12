@@ -9,7 +9,7 @@ from ragas.metrics import (
     context_recall,
 )
 from datasets import Dataset
-from src.rag import RAG
+from rag import RAG
 
 # 環境変数の読み込み
 load_dotenv()

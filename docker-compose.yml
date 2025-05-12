@@ -10,7 +10,7 @@ services:
       - .env
     ports:
       - "8080:8000"
-    command: python -m src.main
+    command: python -m main
     environment:
       - PYTHONUNBUFFERED=1
     stdin_open: true

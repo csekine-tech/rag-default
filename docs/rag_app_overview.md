@@ -56,12 +56,12 @@
 # 初回のみ: ベクトルDB永続化ディレクトリを削除して再構築推奨
 rm -rf data/chroma
 # ナレッジベースの埋め込み・対話QA
-docker-compose run --rm rag-app python -m src.main
+docker-compose run --rm rag-app python -m main
 ```
 
 ### RAGASによる自動評価
 ```sh
-docker-compose run --rm rag-app python -m src.evaluate
+docker-compose run --rm rag-app python -m evaluate
 ```
 
 ## 6. 評価方法（RAGAS）

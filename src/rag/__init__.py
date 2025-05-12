@@ -1,3 +1,3 @@
-from src.rag.rag import RAG
+from rag.rag import RAG
 
 __all__ = ["RAG"]

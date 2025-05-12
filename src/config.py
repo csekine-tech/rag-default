@@ -3,11 +3,15 @@ from typing import Optional
 from dotenv import load_dotenv
 import os
 from functools import lru_cache
-from src.rag.models.model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
+from rag.models.model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
 
 load_dotenv()
 
 class Settings(BaseSettings):
+    """
+    環境変数・設定値を管理するクラス。
+    必要に応じてPYTHONPATHも許容する。
+    """
     # モデル設定
     EMBEDDING_MODEL_TYPE: str = "openai"
     EMBEDDING_MODEL_NAME: str = "text-embedding-3-small"
@@ -26,6 +30,7 @@ class Settings(BaseSettings):
     KNOWLEDGE_BASE_DIRECTORY: str = "data/knowledge"
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 200
+    PYTHONPATH: Optional[str] = None
 
     class Config:
         env_file = ".env"

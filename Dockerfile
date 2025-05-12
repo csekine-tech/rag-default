@@ -25,4 +25,4 @@ RUN mkdir -p /app/data/chroma /app/data/knowledge
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
 
-CMD ["python", "-m", "src.main"]
+CMD ["python", "-m", "main"]
