@@ -2,9 +2,9 @@ import json
 import os
 from typing import List
 from langchain.schema import Document
-from rag.embeddings.embedding_manager import EmbeddingManager
-from rag.retrieval.retriever import Retriever
-from rag.utils.message_manager import MessageManager
+from ..embeddings.embedding_manager import EmbeddingManager
+from .retriever import Retriever
+from ..utils.message_manager import MessageManager
 
 def load_test_documents(file_path: str) -> List[Document]:
     """JSONファイルからテスト文書を読み込む"""

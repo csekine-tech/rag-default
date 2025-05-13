@@ -5,7 +5,7 @@ from langchain_anthropic import ChatAnthropic
 from langchain_community.embeddings import BedrockEmbeddings, HuggingFaceEmbeddings
 from langchain_community.chat_models import BedrockChat
 from langchain_google_vertexai import VertexAIEmbeddings, ChatVertexAI
-from rag.models.model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
+from .model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
 
 class ModelFactoryError(Exception):
     """

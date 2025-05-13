@@ -3,13 +3,15 @@ from typing import List, Dict
 from dotenv import load_dotenv
 from ragas import evaluate
 from ragas.metrics import (
-    faithfulness,
     answer_relevancy,
-    context_precision,
     context_recall,
+    context_precision,
+    faithfulness,
+    answer_similarity,
 )
 from datasets import Dataset
-from rag import RAG
+from src.rag import RAG
+from data.evaluation.test_dataset import EVALUATION_DATASET
 
 # 環境変数の読み込み
 load_dotenv()
@@ -44,9 +46,6 @@ def create_evaluation_dataset(rag: RAG, test_data: List[Dict]) -> Dataset:
 def main():
     # RAGシステムの初期化
     rag = RAG()
-
-    # テストデータの読み込み
-    from data.evaluation.test_dataset import EVALUATION_DATASET
 
     # 評価用データセットの作成
     eval_dataset = create_evaluation_dataset(rag, EVALUATION_DATASET)

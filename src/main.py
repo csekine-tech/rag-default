@@ -1,7 +1,7 @@
 import logging
-from rag.embeddings.embedding_manager import EmbeddingManager
-from rag.generation.answer_generator import AnswerGenerator
-from config import get_settings
+from src.rag.embeddings.embedding_manager import EmbeddingManager
+from src.rag.generation.answer_generator import AnswerGenerator
+from src.config import get_settings
 from typing import Optional
 import os
 

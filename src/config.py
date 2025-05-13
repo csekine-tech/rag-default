@@ -3,7 +3,7 @@ from typing import Optional
 from dotenv import load_dotenv
 import os
 from functools import lru_cache
-from rag.models.model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
+from src.rag.models.model_config import ModelType, EmbeddingModelConfig, GenerationModelConfig
 
 load_dotenv()
 
@@ -31,6 +31,12 @@ class Settings(BaseSettings):
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 200
     PYTHONPATH: Optional[str] = None
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_DB: str
+    POSTGRES_HOST: str = "postgres"
+    POSTGRES_PORT: int = 5432
+    PGVECTOR_COLLECTION: str = "my_docs"
 
     class Config:
         env_file = ".env"

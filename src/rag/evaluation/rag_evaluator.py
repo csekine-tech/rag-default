@@ -4,14 +4,15 @@ from datasets import Dataset
 from langchain_openai import ChatOpenAI
 from ragas import evaluate
 from ragas.metrics import (
-    Faithfulness,
-    AnswerRelevancy,
-    ContextPrecision,
-    ContextRecall,
+    answer_relevancy,
+    context_recall,
+    context_precision,
+    faithfulness,
+    answer_similarity,
 )
 from ..embeddings.embedding_manager import EmbeddingManager
 from ..generation.answer_generator import AnswerGenerator
-from config import get_settings, get_generation_model_config
+from src.config import get_settings, get_generation_model_config
 
 class RAGEvaluator:
     def __init__(self, embedding_manager: EmbeddingManager, answer_generator: AnswerGenerator):

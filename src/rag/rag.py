@@ -1,8 +1,8 @@
 import logging
 from typing import Dict, Optional
-from rag.embeddings.embedding_manager import EmbeddingManager
-from rag.generation.answer_generator import AnswerGenerator
-from rag.retrieval.retriever import Retriever
+from .embeddings.embedding_manager import EmbeddingManager
+from .generation.answer_generator import AnswerGenerator
+from .retrieval.retriever import Retriever
 
 class RAGError(Exception):
     """

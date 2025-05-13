@@ -5,8 +5,8 @@ from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain.schema import Document
-from config import get_settings, get_embedding_model_config
-from rag.models.model_factory import ModelFactory
+from src.config import get_settings, get_embedding_model_config
+from ..models.model_factory import ModelFactory
 
 class EmbeddingManagerError(Exception):
     """

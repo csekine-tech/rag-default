@@ -2,7 +2,7 @@ import logging
 from typing import List, Optional
 from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
-from rag.embeddings.embedding_manager import EmbeddingManager
+from ..embeddings.embedding_manager import EmbeddingManager
 
 class RetrieverError(Exception):
     """
