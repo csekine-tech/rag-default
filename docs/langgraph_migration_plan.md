@@ -1,12 +1,13 @@
 # 実装進捗
 
-- 2024/06/09: 実装計画を作成・保存。LangGraphワークフロー雛形（rag/graph.py）作成準備中。
-- 2024/06/09: rag/graph.py にLangGraphワークフロー雛形を実装。
-- 2024/06/09: pgvector対応retriever（src/rag/retrieval/pgvector.py）雛形を実装。
-- 2024/06/09: pgvector対応retrieverをLangGraphワークフロー（src/rag/graph.py）に組み込み。
-- 2024/06/09: EmbeddingManagerからembedding_functionをDIしPGVectorに組み込む対応を実施。
-- 2024/06/09: LLMノードをAnswerGenerator本実装に差し替え。
-- 2024/06/XX: ベクトルDB文書登録スクリプト（scripts/upload_documents.py）をSRP準拠で実装・運用開始。
+- 2025/05/13: 実装計画を作成・保存。LangGraphワークフロー雛形（rag/graph.py）作成準備中。
+- 2025/05/13: rag/graph.py にLangGraphワークフロー雛形を実装。
+- 2025/05/13: pgvector対応retriever（src/rag/retrieval/pgvector.py）雛形を実装。
+- 2025/05/13: pgvector対応retrieverをLangGraphワークフロー（src/rag/graph.py）に組み込み。
+- 2025/05/13: EmbeddingManagerからembedding_functionをDIしPGVectorに組み込む対応を実施。
+- 2025/05/13: LLMノードをAnswerGenerator本実装に差し替え。
+- 2025/05/13: ベクトルDB文書登録スクリプト（scripts/upload_documents.py）をSRP準拠で実装・運用開始。
+- 2025/05/14: 依存・環境・RAG基盤の各種修正（.env, Docker, requirements, config, retriever, embedding, モデルファクトリ等の細部修正・新規追加）、pgvector対応やテスト文書追加、初期化・評価・main処理の改善。
 
 # LangGraph & LangSmith 移行実装計画
 
